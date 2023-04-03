@@ -1,25 +1,43 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+import React from "react";
+import ReactDOM from "react-dom/client";
 
-const heading = React.createElement("div", {
-        id: "parent"
-    },
-    [React.createElement("div", {
-                id: "child"
-            },
-            [React.createElement("h1", {
-                id: "heading"
-            }, "This is Namaste React"), React.createElement("h2", {
-                id: "heading"
-            }, "This is H2 Tag")]),
-        React.createElement("div", {
-                id: "child2"
-            },
-            [React.createElement("h1", {
-                id: "heading"
-            }, "This is H1 Tag"), React.createElement("h2", {
-                id: "heading"
-            }, "This is H2 Tag")])
-    ]);
+// const heading = React.createElement(
+//   "H1",
+//   {
+//     id: "heading",
+//   },
+//   "Namaste React!!!"
+// );
+// JSX => Babel transpiled code to React.createElement => ReactElement -JS Object => HTMLElement(render);
+// const jsxHeading = (
+//   <h1 className="head" tabIndex="1">
+//     Namaste React Using JSX!!!
+//   </h1>
+// );
+
+const Title = () => (
+  <h1 className="title" tabIndex="2">
+    Namaste React Using JSX
+  </h1>
+);
+
+const elem = <h1>This is Element</h1>;
+
+const HeadingComponent = () => (
+  // <React.Fragment>
+  <>
+    {elem}
+    {12345 + 54321}
+    {Title()}
+    <Title></Title>
+    <Title />
+    <h1 className="heading" tabIndex="1">
+      Namaste React Using React Component!!!
+    </h1>
+  </>
+  // </React.Fragment>
+);
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(heading);
+
+root.render(<HeadingComponent />);
