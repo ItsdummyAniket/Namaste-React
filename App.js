@@ -1,43 +1,2125 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-// const heading = React.createElement(
-//   "H1",
-//   {
-//     id: "heading",
-//   },
-//   "Namaste React!!!"
-// );
-// JSX => Babel transpiled code to React.createElement => ReactElement -JS Object => HTMLElement(render);
-// const jsxHeading = (
-//   <h1 className="head" tabIndex="1">
-//     Namaste React Using JSX!!!
-//   </h1>
-// );
+const Header = () => {
+  return (
+    <div className="header-container">
+      <div className="header-logo">
+        <img src="https://icon-library.com/images/order-food-icon/order-food-icon-2.jpg"></img>
+      </div>
+      <div className="header-nav-container">
+        <ul>
+          <li>Home</li>
+          <li>About</li>
+          <li>Contact Us</li>
+          <li>Cart</li>
+        </ul>
+      </div>
+    </div>
+  );
+};
 
-const Title = () => (
-  <h1 className="title" tabIndex="2">
-    Namaste React Using JSX
-  </h1>
-);
+const Search = () => {
+  return (
+    <div className="search">
+      <input
+        className="search-input"
+        type="text"
+        placeholder="Search...."
+      ></input>
+      <button className="search-button" type="submit">
+        Search
+      </button>
+    </div>
+  );
+};
 
-const elem = <h1>This is Element</h1>;
+const RestaurantCard = (props) => {
+  const {
+    name,
+    cuisines,
+    cloudinaryImageId,
+    costForTwo,
+    avgRating,
+    deliveryTime,
+  } = props?.resData?.data;
+  return (
+    <div className="res-card-container">
+      <div className="res-card-img">
+        <img
+          src={
+            "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/" +
+            cloudinaryImageId
+          }
+        ></img>
+      </div>
+      <h3>{name}</h3>
+      <h4>{cuisines.join(", ")}</h4>
+      <h4>₹{costForTwo / 100} FOR TWO</h4>
+      <h4>{avgRating} STAR</h4>
+      <h4>{deliveryTime} MINS</h4>
+    </div>
+  );
+};
 
-const HeadingComponent = () => (
-  // <React.Fragment>
-  <>
-    {elem}
-    {12345 + 54321}
-    {Title()}
-    <Title></Title>
-    <Title />
-    <h1 className="heading" tabIndex="1">
-      Namaste React Using React Component!!!
-    </h1>
-  </>
-  // </React.Fragment>
-);
+const resList = [
+  {
+    type: "restaurant",
+    data: {
+      type: "F",
+      id: "152615",
+      name: "Indori Sarafa",
+      uuid: "c02e9465-f182-44c7-b4ff-aabea295c40d",
+      city: "6",
+      area: "Hinjawadi",
+      totalRatingsString: "5000+ ratings",
+      cloudinaryImageId: "rwuupxuajez3xuadpch5",
+      cuisines: ["Snacks", "Chaat", "Street Food", "North Indian"],
+      tags: [],
+      costForTwo: 20000,
+      costForTwoString: "₹200 FOR TWO",
+      deliveryTime: 27,
+      minDeliveryTime: 27,
+      maxDeliveryTime: 27,
+      slaString: "27 MINS",
+      lastMileTravel: 4.599999904632568,
+      slugs: {
+        restaurant: "indori-sarafa-wakad-road-vam",
+        city: "pune",
+      },
+      cityState: "6",
+      address:
+        "SNO,146/1,1371,WAKAD ROAD,NEAR IDBI BANK,HINJEWADI CHOWK NEAR LEZZATI ",
+      locality: "Wakad",
+      parentId: 107005,
+      unserviceable: false,
+      veg: true,
+      select: false,
+      favorite: false,
+      tradeCampaignHeaders: [],
+      aggregatedDiscountInfo: {
+        header: "FLAT75 off",
+        shortDescriptionList: [
+          {
+            meta: "FLAT75 off | Use BFBINGE",
+            discountType: "Flat",
+            operationType: "RESTAURANT",
+          },
+        ],
+        descriptionList: [
+          {
+            meta: "FLAT75 off | Use BFBINGE",
+            discountType: "Flat",
+            operationType: "RESTAURANT",
+          },
+        ],
+        subHeader: "",
+        headerType: 0,
+        superFreedel: "",
+      },
+      aggregatedDiscountInfoV2: {
+        header: "₹75 OFF",
+        shortDescriptionList: [
+          {
+            meta: "Use BFBINGE",
+            discountType: "Flat",
+            operationType: "RESTAURANT",
+          },
+        ],
+        descriptionList: [
+          {
+            meta: "FLAT75 off | Use BFBINGE",
+            discountType: "Flat",
+            operationType: "RESTAURANT",
+          },
+        ],
+        subHeader: "",
+        headerType: 0,
+        superFreedel: "",
+      },
+      ribbon: [
+        {
+          type: "PROMOTED",
+        },
+      ],
+      chain: [],
+      feeDetails: {
+        fees: [
+          {
+            name: "distance",
+            fee: 4300,
+            message: "",
+          },
+          {
+            name: "time",
+            fee: 0,
+            message: "",
+          },
+          {
+            name: "special",
+            fee: 0,
+            message: "",
+          },
+        ],
+        totalFees: 4300,
+        message: "",
+        title: "Delivery Charge",
+        amount: "4300",
+        icon: "",
+      },
+      availability: {
+        opened: true,
+        nextOpenMessage: "",
+        nextCloseMessage: "",
+      },
+      longDistanceEnabled: 0,
+      rainMode: "NONE",
+      thirdPartyAddress: false,
+      thirdPartyVendor: "",
+      adTrackingID: "cid=6672388~p=1~eid=00000188-0e0b-e862-4674-935900b40122",
+      badges: {
+        imageBased: [],
+        textBased: [],
+        textExtendedBadges: [],
+      },
+      lastMileTravelString: "4.5 kms",
+      hasSurge: false,
+      sla: {
+        restaurantId: "152615",
+        deliveryTime: 27,
+        minDeliveryTime: 27,
+        maxDeliveryTime: 27,
+        lastMileTravel: 4.599999904632568,
+        lastMileDistance: 0,
+        serviceability: "SERVICEABLE",
+        rainMode: "NONE",
+        longDistance: "NOT_LONG_DISTANCE",
+        preferentialService: false,
+        iconType: "EMPTY",
+      },
+      promoted: true,
+      avgRating: "4.0",
+      totalRatings: 5000,
+      new: false,
+    },
+    subtype: "basic",
+  },
+  {
+    type: "restaurant",
+    data: {
+      type: "F",
+      id: "211120",
+      name: "Taste Of Indore - Wakad",
+      uuid: "a399c022-9f45-48ac-b39e-a811e81a206e",
+      city: "6",
+      area: "Wakad",
+      totalRatingsString: "5000+ ratings",
+      cloudinaryImageId: "t75cewfmn6nhtlureo8g",
+      cuisines: ["Street Food", "Chaat", "Sweets", "Snacks"],
+      tags: [],
+      costForTwo: 25000,
+      costForTwoString: "₹250 FOR TWO",
+      deliveryTime: 19,
+      minDeliveryTime: 19,
+      maxDeliveryTime: 19,
+      slaString: "19 MINS",
+      lastMileTravel: 0.699999988079071,
+      slugs: {
+        restaurant: "a-taste-of-indore-wakad-wakad",
+        city: "pune",
+      },
+      cityState: "6",
+      address:
+        "In Front Of Ozone Spring, Utkarsh Chowk, Datta Mandir Road, Wakad, Pune,Wakad, Pune,Pune",
+      locality: "Datta Mandir Road",
+      parentId: 201614,
+      unserviceable: false,
+      veg: false,
+      select: false,
+      favorite: false,
+      tradeCampaignHeaders: [],
+      aggregatedDiscountInfo: {
+        header: "10% off",
+        shortDescriptionList: [
+          {
+            meta: "10% off | Use TRYNEW",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        descriptionList: [
+          {
+            meta: "10% off up to ₹40 | Use code TRYNEW",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        subHeader: "",
+        headerType: 0,
+        superFreedel: "",
+      },
+      aggregatedDiscountInfoV2: {
+        header: "10% OFF",
+        shortDescriptionList: [
+          {
+            meta: "Use TRYNEW",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        descriptionList: [
+          {
+            meta: "10% off up to ₹40 | Use code TRYNEW",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        subHeader: "",
+        headerType: 0,
+        superFreedel: "",
+      },
+      chain: [],
+      feeDetails: {
+        fees: [
+          {
+            name: "distance",
+            fee: 3100,
+            message: "",
+          },
+          {
+            name: "time",
+            fee: 0,
+            message: "",
+          },
+          {
+            name: "special",
+            fee: 0,
+            message: "",
+          },
+        ],
+        totalFees: 3100,
+        message: "",
+        title: "Delivery Charge",
+        amount: "3100",
+        icon: "",
+      },
+      availability: {
+        opened: true,
+        nextOpenMessage: "",
+        nextCloseMessage: "",
+      },
+      longDistanceEnabled: 0,
+      rainMode: "NONE",
+      thirdPartyAddress: false,
+      thirdPartyVendor: "",
+      adTrackingID: "",
+      badges: {
+        imageBased: [],
+        textBased: [],
+        textExtendedBadges: [],
+      },
+      lastMileTravelString: "0.6 kms",
+      hasSurge: false,
+      sla: {
+        restaurantId: "211120",
+        deliveryTime: 19,
+        minDeliveryTime: 19,
+        maxDeliveryTime: 19,
+        lastMileTravel: 0.699999988079071,
+        lastMileDistance: 0,
+        serviceability: "SERVICEABLE",
+        rainMode: "NONE",
+        longDistance: "NOT_LONG_DISTANCE",
+        preferentialService: false,
+        iconType: "EMPTY",
+      },
+      promoted: false,
+      avgRating: "4.4",
+      totalRatings: 5000,
+      new: false,
+    },
+    subtype: "basic",
+  },
+  {
+    type: "restaurant",
+    data: {
+      type: "F",
+      id: "207652",
+      name: "Upsouth",
+      uuid: "0a480b0b-40cf-4cb4-8eea-6be1b1ef9561",
+      city: "6",
+      area: "Wakad",
+      totalRatingsString: "1000+ ratings",
+      cloudinaryImageId: "j251lpo09webaoc2skc7",
+      cuisines: ["South Indian"],
+      tags: [],
+      costForTwo: 25000,
+      costForTwoString: "₹250 FOR TWO",
+      deliveryTime: 23,
+      minDeliveryTime: 23,
+      maxDeliveryTime: 23,
+      slaString: "23 MINS",
+      lastMileTravel: 0.6000000238418579,
+      slugs: {
+        restaurant: "upsouth-wakad-wakad",
+        city: "pune",
+      },
+      cityState: "6",
+      address: "Datta Mandir Road, Shankar Kalat Nagar, Wakad, Pune,Wakad,Pune",
+      locality: "Shankar Kalat Nagar",
+      parentId: 22184,
+      unserviceable: false,
+      veg: true,
+      select: false,
+      favorite: false,
+      tradeCampaignHeaders: [],
+      aggregatedDiscountInfo: {
+        header: "FLAT125 off",
+        shortDescriptionList: [
+          {
+            meta: "FLAT125 off | Use BFBINGE",
+            discountType: "Flat",
+            operationType: "RESTAURANT",
+          },
+        ],
+        descriptionList: [
+          {
+            meta: "FLAT125 off | Use BFBINGE",
+            discountType: "Flat",
+            operationType: "RESTAURANT",
+          },
+        ],
+        subHeader: "",
+        headerType: 0,
+        superFreedel: "",
+      },
+      aggregatedDiscountInfoV2: {
+        header: "₹125 OFF",
+        shortDescriptionList: [
+          {
+            meta: "Use BFBINGE",
+            discountType: "Flat",
+            operationType: "RESTAURANT",
+          },
+        ],
+        descriptionList: [
+          {
+            meta: "FLAT125 off | Use BFBINGE",
+            discountType: "Flat",
+            operationType: "RESTAURANT",
+          },
+        ],
+        subHeader: "",
+        headerType: 0,
+        superFreedel: "",
+      },
+      chain: [],
+      feeDetails: {
+        fees: [
+          {
+            name: "distance",
+            fee: 3100,
+            message: "",
+          },
+          {
+            name: "time",
+            fee: 0,
+            message: "",
+          },
+          {
+            name: "special",
+            fee: 0,
+            message: "",
+          },
+        ],
+        totalFees: 3100,
+        message: "",
+        title: "Delivery Charge",
+        amount: "3100",
+        icon: "",
+      },
+      availability: {
+        opened: true,
+        nextOpenMessage: "",
+        nextCloseMessage: "",
+      },
+      longDistanceEnabled: 0,
+      rainMode: "NONE",
+      thirdPartyAddress: false,
+      thirdPartyVendor: "",
+      adTrackingID: "",
+      badges: {
+        imageBased: [],
+        textBased: [],
+        textExtendedBadges: [],
+      },
+      lastMileTravelString: "0.6 kms",
+      hasSurge: false,
+      sla: {
+        restaurantId: "207652",
+        deliveryTime: 23,
+        minDeliveryTime: 23,
+        maxDeliveryTime: 23,
+        lastMileTravel: 0.6000000238418579,
+        lastMileDistance: 0,
+        serviceability: "SERVICEABLE",
+        rainMode: "NONE",
+        longDistance: "NOT_LONG_DISTANCE",
+        preferentialService: false,
+        iconType: "EMPTY",
+      },
+      promoted: false,
+      avgRating: "3.8",
+      totalRatings: 1000,
+      new: false,
+    },
+    subtype: "basic",
+  },
+  {
+    type: "restaurant",
+    data: {
+      type: "F",
+      id: "325737",
+      name: "Indori Sarafa Bazaar",
+      uuid: "bbea1e22-4dcc-462c-9d63-51adafdc80ce",
+      city: "6",
+      area: "Wakad",
+      totalRatingsString: "1000+ ratings",
+      cloudinaryImageId: "grkegiwnofkgbqpwvcbz",
+      cuisines: [
+        "Street Food",
+        "Chaat",
+        "Snacks",
+        "Desserts",
+        "Sweets",
+        "North Indian",
+      ],
+      tags: [],
+      costForTwo: 25000,
+      costForTwoString: "₹250 FOR TWO",
+      deliveryTime: 17,
+      minDeliveryTime: 17,
+      maxDeliveryTime: 17,
+      slaString: "17 MINS",
+      lastMileTravel: 0.699999988079071,
+      slugs: {
+        restaurant: "sarafa-chaat-wakad-wakad",
+        city: "pune",
+      },
+      cityState: "6",
+      address:
+        "Sr No 166, Utkarsh Chouk, Datta Mandir Road, Opp Pizza Hut, Wakad Pune",
+      locality: "Datta Mandir Road",
+      parentId: 107006,
+      unserviceable: false,
+      veg: true,
+      select: false,
+      favorite: false,
+      tradeCampaignHeaders: [],
+      aggregatedDiscountInfo: {
+        header: "FLAT100 off",
+        shortDescriptionList: [
+          {
+            meta: "FLAT100 off | Use FLATDEAL",
+            discountType: "Flat",
+            operationType: "RESTAURANT",
+          },
+        ],
+        descriptionList: [
+          {
+            meta: "FLAT100 off | Use FLATDEAL",
+            discountType: "Flat",
+            operationType: "RESTAURANT",
+          },
+        ],
+        subHeader: "",
+        headerType: 0,
+        superFreedel: "",
+      },
+      aggregatedDiscountInfoV2: {
+        header: "₹100 OFF",
+        shortDescriptionList: [
+          {
+            meta: "Use FLATDEAL",
+            discountType: "Flat",
+            operationType: "RESTAURANT",
+          },
+        ],
+        descriptionList: [
+          {
+            meta: "FLAT100 off | Use FLATDEAL",
+            discountType: "Flat",
+            operationType: "RESTAURANT",
+          },
+        ],
+        subHeader: "",
+        headerType: 0,
+        superFreedel: "",
+      },
+      ribbon: [
+        {
+          type: "PROMOTED",
+        },
+      ],
+      chain: [],
+      feeDetails: {
+        fees: [
+          {
+            name: "distance",
+            fee: 3100,
+            message: "",
+          },
+          {
+            name: "time",
+            fee: 0,
+            message: "",
+          },
+          {
+            name: "special",
+            fee: 0,
+            message: "",
+          },
+        ],
+        totalFees: 3100,
+        message: "",
+        title: "Delivery Charge",
+        amount: "3100",
+        icon: "",
+      },
+      availability: {
+        opened: true,
+        nextOpenMessage: "",
+        nextCloseMessage: "",
+      },
+      longDistanceEnabled: 0,
+      rainMode: "NONE",
+      thirdPartyAddress: false,
+      thirdPartyVendor: "",
+      adTrackingID: "cid=6673314~p=4~eid=00000188-0e0b-e862-4674-935a00b4041a",
+      badges: {
+        imageBased: [],
+        textBased: [],
+        textExtendedBadges: [],
+      },
+      lastMileTravelString: "0.6 kms",
+      hasSurge: false,
+      sla: {
+        restaurantId: "325737",
+        deliveryTime: 17,
+        minDeliveryTime: 17,
+        maxDeliveryTime: 17,
+        lastMileTravel: 0.699999988079071,
+        lastMileDistance: 0,
+        serviceability: "SERVICEABLE",
+        rainMode: "NONE",
+        longDistance: "NOT_LONG_DISTANCE",
+        preferentialService: false,
+        iconType: "EMPTY",
+      },
+      promoted: true,
+      avgRating: "4.3",
+      totalRatings: 1000,
+      new: false,
+    },
+    subtype: "basic",
+  },
+  {
+    type: "restaurant",
+    data: {
+      type: "F",
+      id: "340978",
+      name: "Real South",
+      uuid: "9776a6e9-c67e-41bd-ae49-d288c44276c2",
+      city: "6",
+      area: "Wakad",
+      totalRatingsString: "500+ ratings",
+      cloudinaryImageId: "jpfysfxerdnah8obmhlb",
+      cuisines: ["South Indian"],
+      tags: [],
+      costForTwo: 25000,
+      costForTwoString: "₹250 FOR TWO",
+      deliveryTime: 33,
+      minDeliveryTime: 33,
+      maxDeliveryTime: 33,
+      slaString: "33 MINS",
+      lastMileTravel: 0.4000000059604645,
+      slugs: {
+        restaurant: "real-south-wakad-wakad",
+        city: "pune",
+      },
+      cityState: "6",
+      address:
+        "Real South, near Mauli Chowk, Shankar Kalat Nagar, Wakad, Pune, Maharashtra, India",
+      locality: "Shankar Kalat Nagar",
+      parentId: 168119,
+      unserviceable: false,
+      veg: false,
+      select: false,
+      favorite: false,
+      tradeCampaignHeaders: [],
+      aggregatedDiscountInfo: {
+        header: "FLAT75 off",
+        shortDescriptionList: [
+          {
+            meta: "FLAT75 off | Use BFBINGE",
+            discountType: "Flat",
+            operationType: "RESTAURANT",
+          },
+        ],
+        descriptionList: [
+          {
+            meta: "FLAT75 off | Use BFBINGE",
+            discountType: "Flat",
+            operationType: "RESTAURANT",
+          },
+        ],
+        subHeader: "",
+        headerType: 0,
+        superFreedel: "",
+      },
+      aggregatedDiscountInfoV2: {
+        header: "₹75 OFF",
+        shortDescriptionList: [
+          {
+            meta: "Use BFBINGE",
+            discountType: "Flat",
+            operationType: "RESTAURANT",
+          },
+        ],
+        descriptionList: [
+          {
+            meta: "FLAT75 off | Use BFBINGE",
+            discountType: "Flat",
+            operationType: "RESTAURANT",
+          },
+        ],
+        subHeader: "",
+        headerType: 0,
+        superFreedel: "",
+      },
+      chain: [],
+      feeDetails: {
+        fees: [
+          {
+            name: "distance",
+            fee: 3100,
+            message: "",
+          },
+          {
+            name: "time",
+            fee: 0,
+            message: "",
+          },
+          {
+            name: "special",
+            fee: 0,
+            message: "",
+          },
+        ],
+        totalFees: 3100,
+        message: "",
+        title: "Delivery Charge",
+        amount: "3100",
+        icon: "",
+      },
+      availability: {
+        opened: true,
+        nextOpenMessage: "",
+        nextCloseMessage: "",
+      },
+      longDistanceEnabled: 0,
+      rainMode: "NONE",
+      thirdPartyAddress: false,
+      thirdPartyVendor: "",
+      adTrackingID: "",
+      badges: {
+        imageBased: [],
+        textBased: [],
+        textExtendedBadges: [],
+      },
+      lastMileTravelString: "0.4 kms",
+      hasSurge: false,
+      sla: {
+        restaurantId: "340978",
+        deliveryTime: 33,
+        minDeliveryTime: 33,
+        maxDeliveryTime: 33,
+        lastMileTravel: 0.4000000059604645,
+        lastMileDistance: 0,
+        serviceability: "SERVICEABLE",
+        rainMode: "NONE",
+        longDistance: "NOT_LONG_DISTANCE",
+        preferentialService: false,
+        iconType: "EMPTY",
+      },
+      promoted: false,
+      avgRating: "4.0",
+      totalRatings: 500,
+      new: false,
+    },
+    subtype: "basic",
+  },
+  {
+    type: "restaurant",
+    data: {
+      type: "F",
+      id: "19594",
+      name: "Whistle Podu",
+      uuid: "1b6d5a46-2545-4520-93cc-1672dec2a52f",
+      city: "6",
+      area: "Wakad",
+      totalRatingsString: "10000+ ratings",
+      cloudinaryImageId: "c3bgttjq1pha1h0asp5d",
+      cuisines: ["South Indian"],
+      tags: [],
+      costForTwo: 20000,
+      costForTwoString: "₹200 FOR TWO",
+      deliveryTime: 23,
+      minDeliveryTime: 23,
+      maxDeliveryTime: 23,
+      slaString: "23 MINS",
+      lastMileTravel: 0.20000000298023224,
+      slugs: {
+        restaurant: "mr-and-mrs-idly-wakad-wakad",
+        city: "pune",
+      },
+      cityState: "6",
+      address:
+        "Shop 2, Cubes Commercial Complex, Capriccio, Datta Mandir Road, Wakad, Pune",
+      locality: "Datta Mandir Road",
+      parentId: 225835,
+      unserviceable: false,
+      veg: true,
+      select: false,
+      favorite: false,
+      tradeCampaignHeaders: [],
+      aggregatedDiscountInfo: {
+        header: "FLAT75 off",
+        shortDescriptionList: [
+          {
+            meta: "FLAT75 off | Use BFBINGE",
+            discountType: "Flat",
+            operationType: "RESTAURANT",
+          },
+        ],
+        descriptionList: [
+          {
+            meta: "FLAT75 off | Use BFBINGE",
+            discountType: "Flat",
+            operationType: "RESTAURANT",
+          },
+        ],
+        subHeader: "",
+        headerType: 0,
+        superFreedel: "",
+      },
+      aggregatedDiscountInfoV2: {
+        header: "₹75 OFF",
+        shortDescriptionList: [
+          {
+            meta: "Use BFBINGE",
+            discountType: "Flat",
+            operationType: "RESTAURANT",
+          },
+        ],
+        descriptionList: [
+          {
+            meta: "FLAT75 off | Use BFBINGE",
+            discountType: "Flat",
+            operationType: "RESTAURANT",
+          },
+        ],
+        subHeader: "",
+        headerType: 0,
+        superFreedel: "",
+      },
+      chain: [],
+      feeDetails: {
+        fees: [
+          {
+            name: "distance",
+            fee: 3100,
+            message: "",
+          },
+          {
+            name: "time",
+            fee: 0,
+            message: "",
+          },
+          {
+            name: "special",
+            fee: 0,
+            message: "",
+          },
+        ],
+        totalFees: 3100,
+        message: "",
+        title: "Delivery Charge",
+        amount: "3100",
+        icon: "",
+      },
+      availability: {
+        opened: true,
+        nextOpenMessage: "",
+        nextCloseMessage: "",
+      },
+      longDistanceEnabled: 0,
+      rainMode: "NONE",
+      thirdPartyAddress: false,
+      thirdPartyVendor: "",
+      adTrackingID: "",
+      badges: {
+        imageBased: [],
+        textBased: [],
+        textExtendedBadges: [],
+      },
+      lastMileTravelString: "0.2 kms",
+      hasSurge: false,
+      sla: {
+        restaurantId: "19594",
+        deliveryTime: 23,
+        minDeliveryTime: 23,
+        maxDeliveryTime: 23,
+        lastMileTravel: 0.20000000298023224,
+        lastMileDistance: 0,
+        serviceability: "SERVICEABLE",
+        rainMode: "NONE",
+        longDistance: "NOT_LONG_DISTANCE",
+        preferentialService: false,
+        iconType: "EMPTY",
+      },
+      promoted: false,
+      avgRating: "4.0",
+      totalRatings: 10000,
+      new: false,
+    },
+    subtype: "basic",
+  },
+  {
+    type: "restaurant",
+    data: {
+      type: "F",
+      id: "145348",
+      name: "Joshi Wadewale",
+      uuid: "9c95a714-4062-490b-a08e-a918e3c08c45",
+      city: "6",
+      area: "Hinjawadi",
+      totalRatingsString: "5000+ ratings",
+      cloudinaryImageId: "iae2nb9wt9v0zgnrz3t5",
+      cuisines: ["South Indian", "Snacks"],
+      tags: [],
+      costForTwo: 10000,
+      costForTwoString: "₹100 FOR TWO",
+      deliveryTime: 37,
+      minDeliveryTime: 37,
+      maxDeliveryTime: 37,
+      slaString: "37 MINS",
+      lastMileTravel: 6.5,
+      slugs: {
+        restaurant: "joshi-wadewale-maan-road-hinjewadi",
+        city: "pune",
+      },
+      cityState: "6",
+      address:
+        "S no.4457,rakshewasti,maan,tal.mulshi, pune-411057, District - Pune PMC & Rural, STATE - Maharashtra",
+      locality: "Maan",
+      parentId: 111529,
+      unserviceable: false,
+      veg: true,
+      select: false,
+      favorite: false,
+      tradeCampaignHeaders: [],
+      aggregatedDiscountInfo: {
+        header: "10% off",
+        shortDescriptionList: [
+          {
+            meta: "10% off | Use TRYNEW",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        descriptionList: [
+          {
+            meta: "10% off up to ₹40 | Use code TRYNEW",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        subHeader: "",
+        headerType: 0,
+        superFreedel: "",
+      },
+      aggregatedDiscountInfoV2: {
+        header: "10% OFF",
+        shortDescriptionList: [
+          {
+            meta: "Use TRYNEW",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        descriptionList: [
+          {
+            meta: "10% off up to ₹40 | Use code TRYNEW",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        subHeader: "",
+        headerType: 0,
+        superFreedel: "",
+      },
+      ribbon: [
+        {
+          type: "PROMOTED",
+        },
+      ],
+      chain: [],
+      feeDetails: {
+        fees: [
+          {
+            name: "distance",
+            fee: 5500,
+            message: "",
+          },
+          {
+            name: "time",
+            fee: 0,
+            message: "",
+          },
+          {
+            name: "special",
+            fee: 0,
+            message: "",
+          },
+        ],
+        totalFees: 5500,
+        message: "",
+        title: "Delivery Charge",
+        amount: "5500",
+        icon: "",
+      },
+      availability: {
+        opened: true,
+        nextOpenMessage: "",
+        nextCloseMessage: "",
+      },
+      longDistanceEnabled: 0,
+      rainMode: "NONE",
+      thirdPartyAddress: false,
+      thirdPartyVendor: "",
+      adTrackingID: "cid=6601118~p=7~eid=00000188-0e0b-e862-4674-935b00b4074f",
+      badges: {
+        imageBased: [],
+        textBased: [],
+        textExtendedBadges: [],
+      },
+      lastMileTravelString: "6.5 kms",
+      hasSurge: false,
+      sla: {
+        restaurantId: "145348",
+        deliveryTime: 37,
+        minDeliveryTime: 37,
+        maxDeliveryTime: 37,
+        lastMileTravel: 6.5,
+        lastMileDistance: 0,
+        serviceability: "SERVICEABLE",
+        rainMode: "NONE",
+        longDistance: "NOT_LONG_DISTANCE",
+        preferentialService: false,
+        iconType: "EMPTY",
+      },
+      promoted: true,
+      avgRating: "4.3",
+      totalRatings: 5000,
+      new: false,
+    },
+    subtype: "basic",
+  },
+  {
+    type: "restaurant",
+    data: {
+      type: "F",
+      id: "411315",
+      name: "Annapurna Sweets, Wakad",
+      uuid: "6ee752ef-b151-4121-a734-34b35c701428",
+      city: "6",
+      area: "Wakad",
+      totalRatingsString: "100+ ratings",
+      cloudinaryImageId: "p0lvra2ceusq9yylxmab",
+      cuisines: ["Sweets", "Snacks"],
+      tags: [],
+      costForTwo: 10000,
+      costForTwoString: "₹100 FOR TWO",
+      deliveryTime: 30,
+      minDeliveryTime: 30,
+      maxDeliveryTime: 30,
+      slaString: "30 MINS",
+      lastMileTravel: 0.4000000059604645,
+      slugs: {
+        restaurant: "annapurna-sweets,-wakad-wakad-wakad",
+        city: "pune",
+      },
+      cityState: "6",
+      address:
+        "177/1/2 Yamunanagar Road, near Mauli Tea and Snacks Centre, Yamuna Nagar, Shankar Kalat Nagar, Wakad, Pune, Maharashtra 411057, India",
+      locality: "Yamuna Nagar",
+      parentId: 241042,
+      unserviceable: false,
+      veg: true,
+      select: false,
+      favorite: false,
+      tradeCampaignHeaders: [],
+      chain: [],
+      feeDetails: {
+        fees: [
+          {
+            name: "distance",
+            fee: 3100,
+            message: "",
+          },
+          {
+            name: "time",
+            fee: 0,
+            message: "",
+          },
+          {
+            name: "special",
+            fee: 0,
+            message: "",
+          },
+        ],
+        totalFees: 3100,
+        message: "",
+        title: "Delivery Charge",
+        amount: "3100",
+        icon: "",
+      },
+      availability: {
+        opened: true,
+        nextOpenMessage: "",
+        nextCloseMessage: "",
+      },
+      longDistanceEnabled: 0,
+      rainMode: "NONE",
+      thirdPartyAddress: false,
+      thirdPartyVendor: "",
+      adTrackingID: "",
+      badges: {
+        imageBased: [],
+        textBased: [],
+        textExtendedBadges: [],
+      },
+      lastMileTravelString: "0.4 kms",
+      hasSurge: false,
+      sla: {
+        restaurantId: "411315",
+        deliveryTime: 30,
+        minDeliveryTime: 30,
+        maxDeliveryTime: 30,
+        lastMileTravel: 0.4000000059604645,
+        lastMileDistance: 0,
+        serviceability: "SERVICEABLE",
+        rainMode: "NONE",
+        longDistance: "NOT_LONG_DISTANCE",
+        preferentialService: false,
+        iconType: "EMPTY",
+      },
+      promoted: false,
+      avgRating: "4.4",
+      totalRatings: 100,
+      new: false,
+    },
+    subtype: "basic",
+  },
+  {
+    type: "restaurant",
+    data: {
+      type: "F",
+      id: "355982",
+      name: "Hyderabadi Biryani Express",
+      uuid: "d451ae93-0500-4216-80db-e04959471758",
+      city: "6",
+      area: "Wakad",
+      totalRatingsString: "1000+ ratings",
+      cloudinaryImageId: "oz1780upqnfzisd5gi3s",
+      cuisines: ["Biryani"],
+      tags: [],
+      costForTwo: 25000,
+      costForTwoString: "₹250 FOR TWO",
+      deliveryTime: 24,
+      minDeliveryTime: 24,
+      maxDeliveryTime: 24,
+      slaString: "24 MINS",
+      lastMileTravel: 0.4000000059604645,
+      slugs: {
+        restaurant: "hyderabadi-biryani-express-wakad-wakad",
+        city: "pune",
+      },
+      cityState: "6",
+      address:
+        "Shop 1, Survey 177/2/1, Datta Mandir road Yamuna Nagar, Wakad, Pune 411057",
+      locality: "Yamuna Nagar",
+      parentId: 105161,
+      unserviceable: false,
+      veg: false,
+      select: false,
+      favorite: false,
+      tradeCampaignHeaders: [],
+      aggregatedDiscountInfo: {
+        header: "Flat ₹125 off",
+        shortDescriptionList: [
+          {
+            meta: "Flat ₹125 off on orders above ₹249",
+            discountType: "Flat",
+            operationType: "RESTAURANT",
+          },
+        ],
+        descriptionList: [
+          {
+            meta: "Flat ₹125 off on orders above ₹249 | Use code MATCHDEAL125",
+            discountType: "Flat",
+            operationType: "RESTAURANT",
+          },
+        ],
+        subHeader: "",
+        headerType: 0,
+        superFreedel: "",
+      },
+      aggregatedDiscountInfoV2: {
+        header: "₹125 OFF",
+        shortDescriptionList: [
+          {
+            meta: "Use MATCHDEAL125",
+            discountType: "Flat",
+            operationType: "RESTAURANT",
+          },
+        ],
+        descriptionList: [
+          {
+            meta: "Flat ₹125 off on orders above ₹249 | Use code MATCHDEAL125",
+            discountType: "Flat",
+            operationType: "RESTAURANT",
+          },
+        ],
+        subHeader: "",
+        headerType: 0,
+        superFreedel: "",
+      },
+      chain: [],
+      feeDetails: {
+        fees: [
+          {
+            name: "distance",
+            fee: 3100,
+            message: "",
+          },
+          {
+            name: "time",
+            fee: 0,
+            message: "",
+          },
+          {
+            name: "special",
+            fee: 0,
+            message: "",
+          },
+        ],
+        totalFees: 3100,
+        message: "",
+        title: "Delivery Charge",
+        amount: "3100",
+        icon: "",
+      },
+      availability: {
+        opened: true,
+        nextOpenMessage: "",
+        nextCloseMessage: "",
+      },
+      longDistanceEnabled: 0,
+      rainMode: "NONE",
+      thirdPartyAddress: false,
+      thirdPartyVendor: "",
+      adTrackingID: "",
+      badges: {
+        imageBased: [],
+        textBased: [],
+        textExtendedBadges: [],
+      },
+      lastMileTravelString: "0.4 kms",
+      hasSurge: false,
+      sla: {
+        restaurantId: "355982",
+        deliveryTime: 24,
+        minDeliveryTime: 24,
+        maxDeliveryTime: 24,
+        lastMileTravel: 0.4000000059604645,
+        lastMileDistance: 0,
+        serviceability: "SERVICEABLE",
+        rainMode: "NONE",
+        longDistance: "NOT_LONG_DISTANCE",
+        preferentialService: false,
+        iconType: "EMPTY",
+      },
+      promoted: false,
+      avgRating: "3.2",
+      totalRatings: 1000,
+      new: false,
+    },
+    subtype: "basic",
+  },
+  {
+    type: "restaurant",
+    data: {
+      type: "F",
+      id: "55633",
+      name: "HealthyBee",
+      uuid: "602e8d2b-a666-4995-ba0e-47ef077ad8ad",
+      city: "6",
+      area: "Silver Sports Club",
+      totalRatingsString: "10000+ ratings",
+      cloudinaryImageId: "hblnskpd5l2p7pdhozdb",
+      cuisines: ["Healthy Food", "Salads", "Punjabi", "Snacks", "Juices"],
+      tags: [],
+      costForTwo: 30000,
+      costForTwoString: "₹300 FOR TWO",
+      deliveryTime: 32,
+      minDeliveryTime: 32,
+      maxDeliveryTime: 32,
+      slaString: "32 MINS",
+      lastMileTravel: 1.399999976158142,
+      slugs: {
+        restaurant: "healthybe-wakad-wakad",
+        city: "pune",
+      },
+      cityState: "6",
+      address: "Silver Sports Club, Behind Vedanta",
+      locality: "Wakad",
+      parentId: 6236,
+      unserviceable: false,
+      veg: false,
+      select: false,
+      favorite: false,
+      tradeCampaignHeaders: [],
+      aggregatedDiscountInfo: {
+        header: "10% off",
+        shortDescriptionList: [
+          {
+            meta: "10% off on all orders",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        descriptionList: [
+          {
+            meta: "10% off on all orders",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        subHeader: "",
+        headerType: 0,
+        superFreedel: "",
+      },
+      aggregatedDiscountInfoV2: {
+        header: "10% OFF",
+        shortDescriptionList: [
+          {
+            meta: "",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        descriptionList: [
+          {
+            meta: "10% off on all orders",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        subHeader: "",
+        headerType: 0,
+        superFreedel: "",
+      },
+      ribbon: [
+        {
+          type: "PROMOTED",
+        },
+      ],
+      chain: [],
+      feeDetails: {
+        fees: [
+          {
+            name: "distance",
+            fee: 3100,
+            message: "",
+          },
+          {
+            name: "time",
+            fee: 0,
+            message: "",
+          },
+          {
+            name: "special",
+            fee: 0,
+            message: "",
+          },
+        ],
+        totalFees: 3100,
+        message: "",
+        title: "Delivery Charge",
+        amount: "3100",
+        icon: "",
+      },
+      availability: {
+        opened: true,
+        nextOpenMessage: "",
+        nextCloseMessage: "",
+      },
+      longDistanceEnabled: 0,
+      rainMode: "NONE",
+      thirdPartyAddress: false,
+      thirdPartyVendor: "",
+      adTrackingID: "cid=6690700~p=10~eid=00000188-0e0b-e862-4674-935c00b40a25",
+      badges: {
+        imageBased: [],
+        textBased: [],
+        textExtendedBadges: [],
+      },
+      lastMileTravelString: "1.3 kms",
+      hasSurge: false,
+      sla: {
+        restaurantId: "55633",
+        deliveryTime: 32,
+        minDeliveryTime: 32,
+        maxDeliveryTime: 32,
+        lastMileTravel: 1.399999976158142,
+        lastMileDistance: 0,
+        serviceability: "SERVICEABLE",
+        rainMode: "NONE",
+        longDistance: "NOT_LONG_DISTANCE",
+        preferentialService: false,
+        iconType: "EMPTY",
+      },
+      promoted: true,
+      avgRating: "4.3",
+      totalRatings: 10000,
+      new: false,
+    },
+    subtype: "basic",
+  },
+  {
+    type: "restaurant",
+    data: {
+      type: "F",
+      id: "653661",
+      name: "Mithai Culture\t",
+      uuid: "aafcf1ac-abb8-408a-9201-8c10e7998bd2",
+      city: "6",
+      area: "Wakad",
+      totalRatingsString: "20+ ratings",
+      cloudinaryImageId: "c314090fcac48f3fa4ccf2a23aeac712",
+      cuisines: ["Sweets"],
+      tags: [],
+      costForTwo: 50000,
+      costForTwoString: "₹500 FOR TWO",
+      deliveryTime: 21,
+      minDeliveryTime: 21,
+      maxDeliveryTime: 21,
+      slaString: "21 MINS",
+      lastMileTravel: 0.20000000298023224,
+      slugs: {
+        restaurant: "mithai-culture-wakad-wakad",
+        city: "pune",
+      },
+      cityState: "6",
+      address:
+        "SR-NO 174/4 DATTA MANDIR ROAD WAKAD,PUNE PCMC WARD NO 87, PUNE PCMC, MAHARASHTRA- 411057",
+      locality: "Datta Mandir Road",
+      parentId: 393324,
+      unserviceable: false,
+      veg: false,
+      select: false,
+      favorite: false,
+      tradeCampaignHeaders: [],
+      aggregatedDiscountInfo: {
+        header: "25% off",
+        shortDescriptionList: [
+          {
+            meta: "25% off | Use TRYNEW",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        descriptionList: [
+          {
+            meta: "25% off up to ₹65 | Use code TRYNEW",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        subHeader: "",
+        headerType: 0,
+        superFreedel: "",
+      },
+      aggregatedDiscountInfoV2: {
+        header: "25% OFF",
+        shortDescriptionList: [
+          {
+            meta: "Use TRYNEW",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        descriptionList: [
+          {
+            meta: "25% off up to ₹65 | Use code TRYNEW",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        subHeader: "",
+        headerType: 0,
+        superFreedel: "",
+      },
+      chain: [],
+      feeDetails: {
+        fees: [
+          {
+            name: "distance",
+            fee: 3100,
+            message: "",
+          },
+          {
+            name: "time",
+            fee: 0,
+            message: "",
+          },
+          {
+            name: "special",
+            fee: 0,
+            message: "",
+          },
+        ],
+        totalFees: 3100,
+        message: "",
+        title: "Delivery Charge",
+        amount: "3100",
+        icon: "",
+      },
+      availability: {
+        opened: true,
+        nextOpenMessage: "",
+        nextCloseMessage: "",
+      },
+      longDistanceEnabled: 0,
+      rainMode: "NONE",
+      thirdPartyAddress: false,
+      thirdPartyVendor: "",
+      adTrackingID: "",
+      badges: {
+        imageBased: [],
+        textBased: [],
+        textExtendedBadges: [],
+      },
+      lastMileTravelString: "0.2 kms",
+      hasSurge: false,
+      sla: {
+        restaurantId: "653661",
+        deliveryTime: 21,
+        minDeliveryTime: 21,
+        maxDeliveryTime: 21,
+        lastMileTravel: 0.20000000298023224,
+        lastMileDistance: 0,
+        serviceability: "SERVICEABLE",
+        rainMode: "NONE",
+        longDistance: "NOT_LONG_DISTANCE",
+        preferentialService: false,
+        iconType: "EMPTY",
+      },
+      promoted: false,
+      avgRating: "4.5",
+      totalRatings: 20,
+      new: false,
+    },
+    subtype: "basic",
+  },
+  {
+    type: "restaurant",
+    data: {
+      type: "F",
+      id: "216080",
+      name: "World Of Sweets",
+      uuid: "da9b037a-5e4a-40c1-94a6-f0d722925a53",
+      city: "6",
+      area: "Wakad",
+      totalRatingsString: "1000+ ratings",
+      cloudinaryImageId: "tefxrhztzugnsanfiuxn",
+      cuisines: ["Sweets"],
+      tags: [],
+      costForTwo: 40000,
+      costForTwoString: "₹400 FOR TWO",
+      deliveryTime: 21,
+      minDeliveryTime: 21,
+      maxDeliveryTime: 21,
+      slaString: "21 MINS",
+      lastMileTravel: 0.800000011920929,
+      slugs: {
+        restaurant: "world-of-sweets-wakad-wakad",
+        city: "pune",
+      },
+      cityState: "6",
+      address:
+        "survey 240,shop no,10-11,Ozone spring,Next to Pizza Hut,Shankar Kalate nagar.Dattamandir Road,Wakad,Pune-411057",
+      locality: "Datta Mandir Road",
+      parentId: 226624,
+      unserviceable: false,
+      veg: true,
+      select: false,
+      favorite: false,
+      tradeCampaignHeaders: [],
+      aggregatedDiscountInfo: {
+        header: "20% off",
+        shortDescriptionList: [
+          {
+            meta: "20% off | Use TRYNEW",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        descriptionList: [
+          {
+            meta: "20% off up to ₹50 | Use code TRYNEW",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        subHeader: "",
+        headerType: 0,
+        superFreedel: "",
+      },
+      aggregatedDiscountInfoV2: {
+        header: "20% OFF",
+        shortDescriptionList: [
+          {
+            meta: "Use TRYNEW",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        descriptionList: [
+          {
+            meta: "20% off up to ₹50 | Use code TRYNEW",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        subHeader: "",
+        headerType: 0,
+        superFreedel: "",
+      },
+      chain: [],
+      feeDetails: {
+        fees: [
+          {
+            name: "distance",
+            fee: 3100,
+            message: "",
+          },
+          {
+            name: "time",
+            fee: 0,
+            message: "",
+          },
+          {
+            name: "special",
+            fee: 0,
+            message: "",
+          },
+        ],
+        totalFees: 3100,
+        message: "",
+        title: "Delivery Charge",
+        amount: "3100",
+        icon: "",
+      },
+      availability: {
+        opened: true,
+        nextOpenMessage: "",
+        nextCloseMessage: "",
+      },
+      longDistanceEnabled: 0,
+      rainMode: "NONE",
+      thirdPartyAddress: false,
+      thirdPartyVendor: "",
+      adTrackingID: "",
+      badges: {
+        imageBased: [],
+        textBased: [],
+        textExtendedBadges: [],
+      },
+      lastMileTravelString: "0.8 kms",
+      hasSurge: false,
+      sla: {
+        restaurantId: "216080",
+        deliveryTime: 21,
+        minDeliveryTime: 21,
+        maxDeliveryTime: 21,
+        lastMileTravel: 0.800000011920929,
+        lastMileDistance: 0,
+        serviceability: "SERVICEABLE",
+        rainMode: "NONE",
+        longDistance: "NOT_LONG_DISTANCE",
+        preferentialService: false,
+        iconType: "EMPTY",
+      },
+      promoted: false,
+      avgRating: "4.2",
+      totalRatings: 1000,
+      new: false,
+    },
+    subtype: "basic",
+  },
+  {
+    type: "restaurant",
+    data: {
+      type: "F",
+      id: "21130",
+      name: "Cafe Durga",
+      uuid: "706382b2-58e6-4f14-b6b0-6825b40e1297",
+      city: "6",
+      area: "Balewadi",
+      totalRatingsString: "10000+ ratings",
+      cloudinaryImageId: "tb50mwfazheowqozjfw2",
+      cuisines: ["South Indian", "Chinese", "North Indian", "Beverages"],
+      tags: [],
+      costForTwo: 25000,
+      costForTwoString: "₹250 FOR TWO",
+      deliveryTime: 47,
+      minDeliveryTime: 47,
+      maxDeliveryTime: 47,
+      slaString: "47 MINS",
+      lastMileTravel: 6.599999904632568,
+      slugs: {
+        restaurant: "cafe-durga-balewadi-baner",
+        city: "pune",
+      },
+      cityState: "6",
+      address:
+        "Shop No. 1, Ground Floor, Speciality Business Centre, Opposite Skp Campus, Near Axis Bank, Balewadi 45",
+      locality: "Speciality Business Center",
+      parentId: 184,
+      unserviceable: false,
+      veg: false,
+      select: false,
+      favorite: false,
+      tradeCampaignHeaders: [],
+      aggregatedDiscountInfo: {
+        header: "Flat ₹125 off",
+        shortDescriptionList: [
+          {
+            meta: "Flat ₹125 off on orders above ₹249",
+            discountType: "Flat",
+            operationType: "RESTAURANT",
+          },
+        ],
+        descriptionList: [
+          {
+            meta: "Flat ₹125 off on orders above ₹249 | Use code MATCHDEAL125",
+            discountType: "Flat",
+            operationType: "RESTAURANT",
+          },
+        ],
+        subHeader: "",
+        headerType: 0,
+        superFreedel: "",
+      },
+      aggregatedDiscountInfoV2: {
+        header: "₹125 OFF",
+        shortDescriptionList: [
+          {
+            meta: "Use MATCHDEAL125",
+            discountType: "Flat",
+            operationType: "RESTAURANT",
+          },
+        ],
+        descriptionList: [
+          {
+            meta: "Flat ₹125 off on orders above ₹249 | Use code MATCHDEAL125",
+            discountType: "Flat",
+            operationType: "RESTAURANT",
+          },
+        ],
+        subHeader: "",
+        headerType: 0,
+        superFreedel: "",
+      },
+      ribbon: [
+        {
+          type: "PROMOTED",
+        },
+      ],
+      chain: [],
+      feeDetails: {
+        fees: [
+          {
+            name: "distance",
+            fee: 5500,
+            message: "",
+          },
+          {
+            name: "time",
+            fee: 0,
+            message: "",
+          },
+          {
+            name: "special",
+            fee: 0,
+            message: "",
+          },
+        ],
+        totalFees: 5500,
+        message: "",
+        title: "Delivery Charge",
+        amount: "5500",
+        icon: "",
+      },
+      availability: {
+        opened: true,
+        nextOpenMessage: "",
+        nextCloseMessage: "",
+      },
+      longDistanceEnabled: 0,
+      rainMode: "NONE",
+      thirdPartyAddress: false,
+      thirdPartyVendor: "",
+      adTrackingID: "cid=6672264~p=13~eid=00000188-0e0b-e862-4674-935d00b40d6f",
+      badges: {
+        imageBased: [],
+        textBased: [],
+        textExtendedBadges: [],
+      },
+      lastMileTravelString: "6.5 kms",
+      hasSurge: false,
+      sla: {
+        restaurantId: "21130",
+        deliveryTime: 47,
+        minDeliveryTime: 47,
+        maxDeliveryTime: 47,
+        lastMileTravel: 6.599999904632568,
+        lastMileDistance: 0,
+        serviceability: "SERVICEABLE",
+        rainMode: "NONE",
+        longDistance: "NOT_LONG_DISTANCE",
+        preferentialService: false,
+        iconType: "EMPTY",
+      },
+      promoted: true,
+      avgRating: "4.1",
+      totalRatings: 10000,
+      new: false,
+    },
+    subtype: "basic",
+  },
+  {
+    type: "restaurant",
+    data: {
+      type: "F",
+      id: "352157",
+      name: "Apni Rasoi",
+      uuid: "d0899c9f-63d8-4c02-8112-95c6974ba86d",
+      city: "6",
+      area: "Wakad",
+      totalRatingsString: "100+ ratings",
+      cloudinaryImageId: "luuidixvaonesc0q5xiu",
+      cuisines: ["North Indian", "Indian", "Beverages"],
+      tags: [],
+      costForTwo: 20000,
+      costForTwoString: "₹200 FOR TWO",
+      deliveryTime: 29,
+      minDeliveryTime: 29,
+      maxDeliveryTime: 29,
+      slaString: "29 MINS",
+      lastMileTravel: 0.5,
+      slugs: {
+        restaurant: "oyee-food-wakad-wakad",
+        city: "pune",
+      },
+      cityState: "6",
+      address: "S N 169/1 WAKAD NEW DATTA NAGAR PUNE - 411057",
+      locality: "Datta Mandir Road",
+      parentId: 64,
+      unserviceable: false,
+      veg: false,
+      select: false,
+      favorite: false,
+      tradeCampaignHeaders: [],
+      aggregatedDiscountInfo: {
+        header: "FLAT125 off",
+        shortDescriptionList: [
+          {
+            meta: "FLAT125 off | Use FLATDEAL",
+            discountType: "Flat",
+            operationType: "RESTAURANT",
+          },
+        ],
+        descriptionList: [
+          {
+            meta: "FLAT125 off | Use FLATDEAL",
+            discountType: "Flat",
+            operationType: "RESTAURANT",
+          },
+        ],
+        subHeader: "",
+        headerType: 0,
+        superFreedel: "",
+      },
+      aggregatedDiscountInfoV2: {
+        header: "₹125 OFF",
+        shortDescriptionList: [
+          {
+            meta: "Use FLATDEAL",
+            discountType: "Flat",
+            operationType: "RESTAURANT",
+          },
+        ],
+        descriptionList: [
+          {
+            meta: "FLAT125 off | Use FLATDEAL",
+            discountType: "Flat",
+            operationType: "RESTAURANT",
+          },
+        ],
+        subHeader: "",
+        headerType: 0,
+        superFreedel: "",
+      },
+      chain: [],
+      feeDetails: {
+        fees: [
+          {
+            name: "distance",
+            fee: 3100,
+            message: "",
+          },
+          {
+            name: "time",
+            fee: 0,
+            message: "",
+          },
+          {
+            name: "special",
+            fee: 0,
+            message: "",
+          },
+        ],
+        totalFees: 3100,
+        message: "",
+        title: "Delivery Charge",
+        amount: "3100",
+        icon: "",
+      },
+      availability: {
+        opened: true,
+        nextOpenMessage: "",
+        nextCloseMessage: "",
+      },
+      longDistanceEnabled: 0,
+      rainMode: "NONE",
+      thirdPartyAddress: false,
+      thirdPartyVendor: "",
+      adTrackingID: "",
+      badges: {
+        imageBased: [],
+        textBased: [],
+        textExtendedBadges: [],
+      },
+      lastMileTravelString: "0.5 kms",
+      hasSurge: false,
+      sla: {
+        restaurantId: "352157",
+        deliveryTime: 29,
+        minDeliveryTime: 29,
+        maxDeliveryTime: 29,
+        lastMileTravel: 0.5,
+        lastMileDistance: 0,
+        serviceability: "SERVICEABLE",
+        rainMode: "NONE",
+        longDistance: "NOT_LONG_DISTANCE",
+        preferentialService: false,
+        iconType: "EMPTY",
+      },
+      promoted: false,
+      avgRating: "4.1",
+      totalRatings: 100,
+      new: false,
+    },
+    subtype: "basic",
+  },
+  {
+    type: "restaurant",
+    data: {
+      type: "F",
+      id: "9025",
+      name: "Baskin Robbins - Ice Cream Desserts",
+      uuid: "4ee66f7b-dd39-49ca-9ec2-fbc67660f298",
+      city: "6",
+      area: "Wakad",
+      totalRatingsString: "1000+ ratings",
+      cloudinaryImageId: "126ea26268daed2437a1f243cb315ea8",
+      cuisines: ["Ice Cream", "Desserts"],
+      tags: [],
+      costForTwo: 20000,
+      costForTwoString: "₹200 FOR TWO",
+      deliveryTime: 26,
+      minDeliveryTime: 26,
+      maxDeliveryTime: 26,
+      slaString: "26 MINS",
+      lastMileTravel: 0.4000000059604645,
+      slugs: {
+        restaurant: "baskin-robbins-mauli-chowk-wakad-wakad",
+        city: "pune",
+      },
+      cityState: "6",
+      address: "Shop no .8 Windsor Apartments, Mauli Chowk, Wakad",
+      locality: "Shankar Kalat Nagar",
+      parentId: 5588,
+      unserviceable: false,
+      veg: true,
+      select: false,
+      favorite: false,
+      tradeCampaignHeaders: [],
+      aggregatedDiscountInfo: {
+        header: "40% off",
+        shortDescriptionList: [
+          {
+            meta: "40% off | Use SPECIALS",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        descriptionList: [
+          {
+            meta: "40% off up to ₹80 on select items | Use code SPECIALS",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        subHeader: "",
+        headerType: 0,
+        superFreedel: "",
+      },
+      aggregatedDiscountInfoV2: {
+        header: "40% OFF",
+        shortDescriptionList: [
+          {
+            meta: "Use SPECIALS",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        descriptionList: [
+          {
+            meta: "40% off up to ₹80 on select items | Use code SPECIALS",
+            discountType: "Percentage",
+            operationType: "RESTAURANT",
+          },
+        ],
+        subHeader: "",
+        headerType: 0,
+        superFreedel: "",
+      },
+      chain: [],
+      feeDetails: {
+        fees: [
+          {
+            name: "distance",
+            fee: 3100,
+            message: "",
+          },
+          {
+            name: "time",
+            fee: 0,
+            message: "",
+          },
+          {
+            name: "special",
+            fee: 0,
+            message: "",
+          },
+        ],
+        totalFees: 3100,
+        message: "",
+        title: "Delivery Charge",
+        amount: "3100",
+        icon: "",
+      },
+      availability: {
+        opened: true,
+        nextOpenMessage: "",
+        nextCloseMessage: "",
+      },
+      longDistanceEnabled: 0,
+      rainMode: "NONE",
+      thirdPartyAddress: false,
+      thirdPartyVendor: "",
+      adTrackingID: "",
+      badges: {
+        imageBased: [],
+        textBased: [],
+        textExtendedBadges: [],
+      },
+      lastMileTravelString: "0.4 kms",
+      hasSurge: false,
+      sla: {
+        restaurantId: "9025",
+        deliveryTime: 26,
+        minDeliveryTime: 26,
+        maxDeliveryTime: 26,
+        lastMileTravel: 0.4000000059604645,
+        lastMileDistance: 0,
+        serviceability: "SERVICEABLE",
+        rainMode: "NONE",
+        longDistance: "NOT_LONG_DISTANCE",
+        preferentialService: false,
+        iconType: "EMPTY",
+      },
+      promoted: false,
+      avgRating: "4.4",
+      totalRatings: 1000,
+      new: false,
+    },
+    subtype: "basic",
+  },
+];
 
+const RestaurantComponent = () => {
+  return (
+    <div className="res-container">
+      {resList.map((restaurant) => (
+        <RestaurantCard key={restaurant.data.id} resData={restaurant} />
+      ))}
+    </div>
+  );
+};
+
+const Body = () => {
+  return (
+    <div className="body">
+      <Search />
+      <RestaurantComponent />
+    </div>
+  );
+};
+
+const AppLayout = () => {
+  return (
+    <div>
+      <Header />
+      <Body />
+    </div>
+  );
+};
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(<HeadingComponent />);
+root.render(<AppLayout />);
